@@ -236,15 +236,17 @@ class Cards extends Component {
           <br />
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
-              <div class="d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-info" onClick={this.previousPage}>Previous</button>
-                <button type="button" class="btn btn-light" disabled> {this.state.page} </button>
-                <button type="button" class="btn btn-info" onClick={this.nextPage}>Next Page</button>
+              <div className="d-flex justify-content-center align-items-center">
+                <button type="button" className="btn btn-info" onClick={this.previousPage}>Previous</button>
+                <button type="button" className="btn btn-light" disabled> {this.state.page} </button>
+                <button type="button" className="btn btn-info" onClick={this.nextPage}>Next Page</button>
               </div>
             </div>
           </div>
         </div>
       )}
+
+        {this.state.jobs ? (this.state.jobs.totalPages < this.state.page ? <center><br /><h5 style={colorGray}> Oops!! Go to page number 1, Jobs are less based on your search. </h5></center>: null) : null}
 
         { this.state.message ? <center><h5 style={colorGray}> No Records Found </h5></center> : (
         
