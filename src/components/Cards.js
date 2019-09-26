@@ -252,7 +252,7 @@ class Cards extends Component {
 
         {this.state.jobs && this.state.jobs.data.map((i,index) => {
           return(
-            <div className="col-sm-4 col-md-4 col-lg-3" key={index}>
+            <div className="col-sm-6 col-md-4 col-lg-3" key={index}>
               <div className="card" style={divStyleCard}>
                 <img className="card-img-top" src="./images/download.png" alt="247 x 180 Size" />
                 <div className="card-body">
