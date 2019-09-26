@@ -17,3 +17,4 @@ $ npm start
 * Fetching Jobs list from an api.
 * Filtering Jobs based on Company Name, Skills, Location, Experience(in numbers & Fresher is treated as 0 year of experience)
 * Pagination (Currently limit is 20 jobs perpage, you can change it in the state)
+* Added Sorting based on location and experience.
