@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Job-Listing-with-Filters-and-Pagination/precache-manifest.21bdde19977a303b7d6def399f4fa83b.js"
+  "/Job-Listing-with-Filters-and-Pagination/precache-manifest.3cdc211e9747b00f15e0d74e3fa5cee4.js"
 );
 
 workbox.clientsClaim();
