@@ -22,6 +22,7 @@ class Cards extends Component {
     this.previousPage = this.previousPage.bind(this);
     this.nextPage = this.nextPage.bind(this);
 
+    this.sortJobs = this.sortJobs.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +65,29 @@ class Cards extends Component {
     }
   }
 
+  sortJobs = (order, key) => {
+    var updatedList = this.state.jobsArray.sort((a, b) => {
+      var textA = a[key].toUpperCase();
+      var textB = b[key].toUpperCase();
+
+      textA = ((textA === "FRESHERS" || textA === "FRESHER") ? '0' : textA);
+      textB = ((textB === "FRESHERS" || textB === "FRESHER") ? '0' : textB);
+
+      if(order === "ASC"){
+        // return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        return textA.localeCompare(textB);
+      } else if(order === "DESC"){
+        // return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+        return textB.localeCompare(textA);
+      }
+    });
+
+    this.setState({
+      jobsArray: updatedList,
+      jobs: paginate(updatedList, this.state.page, this.state.size)
+    });
+  }
+
   filterJobs = param => e =>
   { 
     // Filtering data from full job list
@@ -95,14 +119,9 @@ class Cards extends Component {
     
     // Filter Based on experience
     if(this.state.experience.length > 0 || (param === 'experience' && e.target.value.length > 0)){
-      console.log();
-      
       var val_to_com = (param === 'experience' ? (e.target.value.length === 0 ? -1 : Number(e.target.value)) : (this.state.experience.length === 0 ? -1 : Number(this.state.experience)));
-      console.log(val_to_com);
       
       if(val_to_com !== -1){
-        console.log("GETTING INSIDE");
-        
         updatedList = updatedList.filter((item => {
           var s;
           if(item['experience'] === 'Fresher'){
@@ -114,12 +133,6 @@ class Cards extends Component {
           }
           
           if(!(s[0] === "null")){
-            console.log(
-              s[0],
-              val_to_com,
-              s[1]
-            );
-            
             if( (s.length === 1 && val_to_com === Number(s[0]))
               || (s.length === 2 && Number(s[0]) <= val_to_com && val_to_com <= Number(s[1]))){
                 return item;
@@ -179,8 +192,9 @@ class Cards extends Component {
 
   return (
     <div>
-      
+      {this.state.isLoading ? <center><h5> Loading ... </h5></center> : (
       <div className="container">
+        
         <div className="row">
             <div className="col-sm-6 col-md-4 col-lg-3">
               <center>
@@ -226,13 +240,28 @@ class Cards extends Component {
               </center>
             </div>
           </div>
-        </div>
+        
+          <br />
+          <div className="row">
 
-      <br />
-      
-      {this.state.isLoading ? <center><h5> Loading ... </h5></center> : (
-        <div className="container">
-          <center><h5>Total {this.state.jobsArray.length} of {this.jobsInit.length} Found</h5></center>
+            <div className="col-sm-6 col-md-4 col-lg-3">
+                <button type="button" className="btn btn-primary" style={inputStyle} onClick={() => this.sortJobs("ASC","location")}>Sort by Location (ASC)</button>
+            </div>
+
+            <div className="col-sm-6 col-md-4 col-lg-3">
+                <button type="button" className="btn btn-primary" style={inputStyle} onClick={() => this.sortJobs("DESC","location")}>Sort by Location (DESC)</button>
+            </div>
+
+            <div className="col-sm-6 col-md-4 col-lg-3">
+                <button type="button" className="btn btn-primary" style={inputStyle} onClick={() => this.sortJobs("ASC","experience")}>Sort by Experience (ASC)</button>
+            </div>
+
+            <div className="col-sm-6 col-md-4 col-lg-3">
+                <button type="button" className="btn btn-primary" style={inputStyle} onClick={() => this.sortJobs("DESC","experience")}>Sort by Experience (DESC)</button>
+            </div>
+
+          </div>
+          <center><br /><h5>Total {this.state.jobsArray.length} of {this.jobsInit.length} Found</h5></center>
           <br />
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
@@ -246,9 +275,9 @@ class Cards extends Component {
         </div>
       )}
 
-        {this.state.jobs ? (this.state.jobs.totalPages < this.state.page ? <center><br /><h5 style={colorGray}> Oops!! Go to page number 1, Jobs are less based on your search. </h5></center>: null) : null}
+        {this.state.jobs ? (this.state.jobs.totalPages < this.state.page && this.state.jobs.totalPages > 0 ? <center><br /><h5 style={colorGray}> Oops!! Go to page number 1, Jobs are less based on your search. </h5></center>: null) : null}
 
-        { this.state.message ? <center><h5 style={colorGray}> No Records Found </h5></center> : (
+        { this.state.message ? <center><br /><h5 style={colorGray}> No Records Found </h5></center> : (
         
         <div className="card-group" style={divStyleMain}>
 
