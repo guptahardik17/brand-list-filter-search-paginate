@@ -234,7 +234,7 @@ class Cards extends Component {
       
       {this.state.isLoading ? <center><h5> Loading ... </h5></center> : (
         <div className="container">
-          <center><h5>Total {this.state.jobs.length} of {this.jobsInit.length} Found</h5></center>
+          <center><h5>Total {this.state.jobs.data.length} of {this.jobsInit.length} Found</h5></center>
           <br />
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
