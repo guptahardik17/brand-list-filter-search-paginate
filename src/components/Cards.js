@@ -24,8 +24,7 @@ class Cards extends Component {
 
   }
 
-  componentWillMount() {
-    // Fetching all data from privided json file
+  componentDidMount() {
     fetch('https://nut-case.s3.amazonaws.com/jobs.json', {
       mode: 'cors',
       method: 'GET'
@@ -42,7 +41,6 @@ class Cards extends Component {
   }
 
   previousPage() {
-    // const { currPage, page, size, todos } = this.state;
     const stateArr = this.state;
 
     if (stateArr.page > 1) {
@@ -57,7 +55,6 @@ class Cards extends Component {
   }
 
   nextPage() {
-    // const { currPage, page, size, todos } = this.state;
     const stateArr = this.state;
     
     if (stateArr.page < stateArr.jobs.totalPages) {
@@ -72,6 +69,7 @@ class Cards extends Component {
     // Filtering data from full job list
     var updatedList =  this.jobsInit;
     
+    // Filter Based on company name
     if(this.state.companyname.length > 0 || (param === 'companyname' && e.target.value.length > 0)){
       updatedList = updatedList.filter((item => {
         return item['companyname'].toLowerCase().search(
@@ -79,6 +77,7 @@ class Cards extends Component {
       }));
     }
 
+    // Filter Based on skills
     if(this.state.skills.length > 0 || (param === 'skills' && e.target.value.length > 0)){
       updatedList = updatedList.filter((item => {
         return item['skills'].toLowerCase().search(
@@ -94,6 +93,7 @@ class Cards extends Component {
     // }
 
     
+    // Filter Based on experience
     if(this.state.experience.length > 0 || (param === 'experience' && e.target.value.length > 0)){
       console.log();
       
@@ -131,6 +131,7 @@ class Cards extends Component {
       }
     }
 
+    // Filter Based on Location
     if(this.state.location.length > 0 || (param === 'location' && e.target.value.length > 0)){
       updatedList = updatedList.filter((item => {
         return item['location'].toLowerCase().search(
@@ -176,9 +177,6 @@ class Cards extends Component {
       color: 'gray'
     };  
 
-  console.log(this.state);
-  
-  
   return (
     <div>
       
