@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import Cards from './components/Cards.js';
+import Products from './components/Products/Products.js';
+import HomeComponent from './components/Home/HomeComponent';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 class App extends Component {
 
   render() {
     return (
+      <Router>
         <div>
-          <Cards />
+          <Switch>
+            <Route path="/:country/products" component={Products}/>
+            <Route path="/" component={HomeComponent}/>
+          </Switch>
+          {/* <Cards /> */}
         </div>
+      </Router>
     );
   }
 }

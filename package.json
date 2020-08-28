@@ -1,12 +1,16 @@
 {
-  "name": "job-listing-with-filters-and-pagination",
+  "name": "brand-listing-with-filters-and-pagination",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://guptahardik17.github.io/Job-Listing-with-Filters-and-Pagination",
   "dependencies": {
+    "axios": "^0.20.0",
     "paginate-array": "^2.1.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
+    "react-avatar": "^3.9.7",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
