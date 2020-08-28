@@ -20,3 +20,9 @@ $ npm start
 * You can search by Brand Name.
 * You can sort brand according to their ranking and year.
 * Implemented Pagination as well.
+
+## Screenshots
+---
+
+
+
