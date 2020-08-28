@@ -24,11 +24,11 @@ $ npm start
 ## Screenshots
 ---
 
-![enter image description here][1]{:target='_blank'}
-![enter image description here][2]{:target='_blank'}
-![enter image description here][3]{:target='_blank'}
-![enter image description here][4]{:target='_blank'}
-![enter image description here][5]{:target='_blank'}
+![enter image description here][1]
+![enter image description here][2]
+![enter image description here][3]
+![enter image description here][4]
+![enter image description here][5]
 
 
   [1]: https://he-s3.s3.amazonaws.com/media/uploads/545aee6.png
@@ -36,6 +36,3 @@ $ npm start
   [3]: https://he-s3.s3.amazonaws.com/media/uploads/67cdef4.png
   [4]: https://he-s3.s3.amazonaws.com/media/uploads/6fba099.png
   [5]: https://he-s3.s3.amazonaws.com/media/uploads/770b512.png
-
-
-
